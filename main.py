@@ -22,9 +22,9 @@ def get_mod() -> int:
 
 
 def set_mod(mod: str):
-    file_path = "/sys/devices/platform/asus-nb-wmi/throttle_thermal_policy"
+    file_ = open("/sys/devices/platform/asus-nb-wmi/throttle_thermal_policy", "w")
     if check_root():
-        if file_path:
+        if file_:
             if mod in ["silent", "turbo", "on_demand"]:
                 with open(file_path, "w") as f:
                     if mod == "silent":
