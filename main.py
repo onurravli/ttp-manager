@@ -47,11 +47,20 @@ def main():
     argparser = argparse.ArgumentParser()
     argparser.add_argument("-s", "--set", help="Set the mod", type=str, choices=["silent", "turbo", "on_demand"])
     argparser.add_argument("-g", "--get", help="Get the mod", action="store_true")
+    argparser.add_argument("-v", "--version", help="Show the version", action="store_true")
+    argparser.add_argument("-l", "--list", help="List the mods", action="store_true")
     args = argparser.parse_args()
     if args.set:
         set_mod(args.set)
     elif args.get:
         print(f"Current mod: {mods[get_mod()]['mod']}")
+    elif args.version:
+        print("Version 0.0.1")
+    elif args.list:
+        print("Available mods: ", end="")
+        for mod in mods:
+            print(mod['mod'], end=" ")
+        print()
     else:
         argparser.print_help()
 
